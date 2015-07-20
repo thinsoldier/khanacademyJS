@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<title>Shooting Star - Khan JavaScript</title>
+	<link rel="stylesheet" href="style.css"/>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
+	<script src="khanprocessing.js"></script>
+</head>
+<body>
+
+<p>
+
+</p>
+<br>
+<canvas id="canvas">
+</canvas>
+<script>
+
+function myKhanCode( env )
+{
+with(env)
+{
+//-----------------------------
+
+frameRate(60);
+noStroke();
+
+mouseClicked = function() {
+    // Restart the program whenever the user clicks the mouse
+    Program.restart();
+};
+
+
+var makeStarField = function(){
+    var out = [];
+    for(var i=0; i< 140; i++)
+    {
+        // x, y, radius, opacity, visual Group.
+        var obj = {
+                    x:random(0,width), y:random(0,height), // current x and y
+                    r:random(1,3), o:ceil(random(9,90)), // Radius , Opacity
+                    vg:ceil(random(0,4)), // Visual Group 
+                };
+        out.push(obj);
+    }
+    var custom = {x:200,y:200,r:9,o:255,vg:2};
+    out.push(custom);
+    return out;
+};
+var starField = makeStarField();
+
+var normalizeMouse = function( value ){
+    return (value - 200) * 0.02;
+};
+
+var drawBG = function(){
+    background(29, 40, 115);
+    var S = starField;
+    noStroke();
+    for(var i=0; i<starField.length; i++)
+    {
+        var star = S[i];
+        
+        fill(255, 255, 255, S[i].o );
+        ellipse(star.x, star.y, star.r, star.r);
+        
+        star.x -= star.vg * normalizeMouse( mouseX );
+        if( star.x < 0  ) { star.x = 400 + star.x; }
+        else if(star.x > 400) { star.x = 0 - star.x; }
+        
+        star.y += star.vg * normalizeMouse( mouseY ) * -1;
+        if(star.y < 0){ star.y = 400 + star.y; }
+        else if( star.y > 400  ){ star.y = 0 - star.y;}
+    }
+};
+
+
+
+draw = function() {
+    drawBG();
+};
+
+//-----------------------------
+}
+}
+
+khanProcessing( myKhanCode, document.getElementById("canvas") );
+  
+</script>
+</body>
+</html>
