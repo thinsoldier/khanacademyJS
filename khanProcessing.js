@@ -20,6 +20,7 @@ function khanProcessing( programFunction, canvasElement )
 			processing.externals.sketch.imageCache.add(url);
 			return processing.loadImage(url);
 		}
+		processing.getImage = getImage;
 
 		with (processing) {
 //-----------------------------
