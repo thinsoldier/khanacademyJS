@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<title>Radial Gradient - Khan JavaScript</title>
+	<link rel="stylesheet" href="style.css"/>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
+	<script src="khanprocessing.js"></script>
+</head>
+<body>
+
+<p>
+<a href="https://www.khanacademy.org/computer-programming/radial-gradient-fake/5144533820112896">https://www.khanacademy.org/computer-programming/radial-gradient-fake/5144533820112896</a>
+</p>
+<br>
+<canvas id="canvas">
+</canvas>
+<script>
+
+function myKhanCode( env )
+{
+with(env)
+{
+//-----------------------------
+
+translate(200,200);
+var startEllipse = 387;
+var percentOfEllipse = 0;
+var startColor = color(89, 0, 89);
+var endColor = color(244, 255, 127);
+
+var x = 0;
+var y = 0;
+
+for( var i=0; i<=100; i+=1)
+{
+    noFill();
+    noStroke();
+    var percentage = i/100;
+    
+    percentOfEllipse = startEllipse * percentage;
+    
+    var eSize = startEllipse - percentOfEllipse;
+    
+    var currentColor = lerpColor(startColor, endColor, percentage);
+    fill(currentColor);
+    
+
+    ellipse(x,y,eSize,eSize);
+
+
+    fill(255, 255, 255);
+    rect(-182,-195,65,53);
+    fill(255, 0, 0);
+    println(percentage);
+    text(percentage * 100 + " %", -175, -183);
+    text(percentOfEllipse,-175,-166);
+    
+}
+
+
+//-----------------------------
+}
+}
+
+khanProcessing( myKhanCode, document.getElementById("canvas") );
+  
+</script>
+</body>
+</html>
