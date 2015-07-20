@@ -8,8 +8,10 @@ function khanProcessing( programFunction, canvasElement )
 		processing.background(0xFFF);
 
 		var mouseIsPressed = false;
-		processing.mousePressed = function () { mouseIsPressed = true; };
-		processing.mouseReleased = function () { mouseIsPressed = false; };
+		processing.mouseIsPressed = mouseIsPressed;
+		
+		processing.mousePressed = function () { mouseIsPressed = true; processing.mouseIsPressed = mouseIsPressed; };
+		processing.mouseReleased = function () { mouseIsPressed = false; processing.mouseIsPressed = mouseIsPressed; };
 
 		var keyIsPressed = false;
 		processing.keyPressed = function () { keyIsPressed = true; };
