@@ -55,6 +55,14 @@ var normalizeMouse = function( value ){
     return (value - 200) * 0.02;
 };
 
+var hypoteneuse = function( x1,y1, x2,y2)
+{
+	var a = x1 - x2
+	var b = y1 - y2
+	var c = Math.sqrt( a*a + b*b );
+	return c;
+}
+
 var drawBG = function(){
     background(29, 40, 115);
     var S = starField;
@@ -83,6 +91,15 @@ var drawBG = function(){
         if(star.y < 0){ star.y = 400 + star.y; }
         else if( star.y > 400  ){ star.y = 0 - star.y;}
     }
+		
+		// Increase stroke weight based on the distance from the mouse to the center of the screen.
+		var distance = hypoteneuse( width/2, height/2, mouseX, mouseY );
+		text(distance, 10, 10);
+		strokeWeight( distance / 30 );
+		
+		// Draw line from middle of the screen to the mouse to indicate control of speed.
+		line( width/2, height/2, mouseX, mouseY );
+		
 };
 
 
