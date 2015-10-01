@@ -45,7 +45,7 @@ var makeStarField = function(){
                 };
         out.push(obj);
     }
-    var custom = {x:200,y:200,r:9,o:255,vg:2};
+    var custom = {x:200,y:200,r:9,o:255,vg:2,unique:true};
     out.push(custom);
     return out;
 };
@@ -65,6 +65,15 @@ var drawBG = function(){
         
         fill(255, 255, 255, S[i].o );
         ellipse(star.x, star.y, star.r, star.r);
+				
+				// grid lines to track the unique star
+				if(star.unique)
+				{
+					strokeWeight(1);
+					stroke(255);
+					line(star.x, 0, star.x, height);
+					line(0, star.y, width, star.y);
+				}
         
         star.x -= star.vg * normalizeMouse( mouseX );
         if( star.x < 0  ) { star.x = 400 + star.x; }
