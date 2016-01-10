@@ -23,6 +23,12 @@ function khanProcessing( )
 			return processing.loadImage(url);
 		}
 		processing.getImage = getImage;
+		
+		processing.getWebImage = function( url ) {
+			processing.externals.sketch.imageCache.add(url);
+			return processing.loadImage(url);
+		}
+		
 	});
 	return processing;
 };
