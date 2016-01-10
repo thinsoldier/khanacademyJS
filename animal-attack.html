@@ -18,9 +18,7 @@
 </canvas>
 <script>
 
-function myKhanCode( env )
-{
-with(env)
+with( khanProcessing() )
 {
 //-----------------------------
 
@@ -91,11 +89,7 @@ var noseH = bodyH/2.65; // +40 relative to body height √
 
 
 //-----------------------------
-}
-}
-
-khanProcessing( myKhanCode, document.getElementById("canvas") );
-  
+}  
 </script>
 </body>
 </html>

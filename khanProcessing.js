@@ -1,8 +1,8 @@
 //http://stackoverflow.com/questions/25341597/how-can-khan-academy-computer-programs-be-run-offline-or-on-my-own-website
 //http://stackoverflow.com/a/25341598/1154693
-function khanProcessing( programFunction, canvasElement ) 
+function khanProcessing( ) 
 {
-	var canvas = canvasElement;
+	var canvas = document.getElementById("canvas");
 	var processing = new Processing(canvas, function(processing) {
 		processing.size(400, 400);
 		processing.background(0xFFF);
@@ -23,18 +23,6 @@ function khanProcessing( programFunction, canvasElement )
 			return processing.loadImage(url);
 		}
 		processing.getImage = getImage;
-
-		with (processing) {
-//-----------------------------
-// INSERT YOUR KHAN ACADEMY PROGRAM BELOW
-//-----------------------------
-
-programFunction(processing);
-
-//-----------------------------
-// END OF YOUR KHAN ACADEMY PROGRAM
-//-----------------------------
-		}
-		if (typeof draw !== 'undefined') processing.draw = draw;
 	});
+	return processing;
 };

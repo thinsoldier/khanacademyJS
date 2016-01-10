@@ -17,10 +17,7 @@
 <canvas id="canvas">
 </canvas>
 <script>
-
-function myKhanCode( env )
-{
-with(env)
+with( khanProcessing() )
 {
 //-----------------------------
 
@@ -110,9 +107,9 @@ draw = function() {
 
 //-----------------------------
 }
-}
 
-khanProcessing( myKhanCode, document.getElementById("canvas") );
+
+
   
 </script>
 </body>

@@ -14,13 +14,11 @@
 <a href="https://www.khanacademy.org/computer-programming/radial-gradient-fake/5144533820112896">https://www.khanacademy.org/computer-programming/radial-gradient-fake/5144533820112896</a>
 </p>
 <br>
-<canvas id="canvas">
-</canvas>
-<script>
 
-function myKhanCode( env )
-{
-with(env)
+<canvas id="canvas"></canvas>
+
+<script>
+with( khanProcessing() )
 {
 //-----------------------------
 
@@ -61,11 +59,7 @@ for( var i=0; i<=100; i+=1)
 
 
 //-----------------------------
-}
-}
-
-khanProcessing( myKhanCode, document.getElementById("canvas") );
-  
+}  
 </script>
 </body>
 </html>

@@ -18,9 +18,7 @@
 </canvas>
 <script>
 
-function myKhanCode( env )
-{
-with(env)
+with( khanProcessing() )
 {
 //-----------------------------
 
@@ -214,11 +212,7 @@ myBackground();
 bookCase();
 
 //-----------------------------
-}
-}
-
-khanProcessing( myKhanCode, document.getElementById("canvas") );
-  
+}  
 </script>
 </body>
 </html>
