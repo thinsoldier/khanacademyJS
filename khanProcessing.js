@@ -6,7 +6,7 @@ function khanProcessing( )
 	var processing = new Processing(canvas, function(processing) {
 		processing.size(400, 400);
 		processing.background(0xFFF);
-
+		processing.frameRate(60);
 		var mouseIsPressed = false;
 		processing.mouseIsPressed = mouseIsPressed;
 		
