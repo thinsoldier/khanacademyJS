@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf8">
-	<title>Shooting Star - Khan JavaScript</title>
+	<title>House - Khan JavaScript</title>
 	<link rel="stylesheet" href="style.css"/>
 	<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script> -->
 	<script src="processing.min.js"></script>
@@ -17,10 +17,7 @@
 <canvas id="canvas">
 </canvas>
 <script>
-
-function myKhanCode( env )
-{
-with(env)
+with( khanProcessing() )
 {
 //-----------------------------
 
@@ -238,9 +235,7 @@ draw = function() {
 
 //-----------------------------
 } // end of with env
-}
 
-khanProcessing( myKhanCode, document.getElementById("canvas") );
   
 </script>
 </body>
