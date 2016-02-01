@@ -29,6 +29,8 @@ function khanProcessing( )
 			return processing.loadImage(url);
 		}
 		
+		processing.draw = function(){ 'override "draw" in your own code' };
+		
 	});
 	return processing;
 };
