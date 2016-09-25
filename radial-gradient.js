@@ -1,24 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf8">
-	<title>Radial Gradient - Khan JavaScript</title>
-	<link rel="stylesheet" href="style.css"/>
-	<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script> -->
-	<script src="processing.min.js"></script>
-	<script src="khanProcessing.js"></script>
-</head>
-<body>
+var originalUrl = null;
 
-<p>
-<a href="https://www.khanacademy.org/computer-programming/radial-gradient-fake/5144533820112896">https://www.khanacademy.org/computer-programming/radial-gradient-fake/5144533820112896</a>
-</p>
-<br>
-
-<canvas id="canvas"></canvas>
-
-<script>
-with( khanProcessing() )
+with( KP )
 {
 //-----------------------------
 
@@ -59,7 +41,4 @@ for( var i=0; i<=100; i+=1)
 
 
 //-----------------------------
-}  
-</script>
-</body>
-</html>
+}

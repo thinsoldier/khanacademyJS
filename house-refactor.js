@@ -1,27 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf8">
-	<title>House day/night transition - Khan JavaScript</title>
-	<link rel="stylesheet" href="style.css"/>
-	<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script> -->
-	<script src="processing.min.js"></script>
-	<script src="khanProcessing.js"></script>
-</head>
-<body>
+var originalUrl = "https://www.khanacademy.org/computer-programming/day-and-night-animation-build-a-house/5706035909230592";
 
-<p>
-
-</p>
-<br>
-<canvas id="canvas">
-</canvas>
-<script>
-with( khanProcessing() )
+with( KP )
 {
 //-----------------------------
 
-// Based on: https://www.khanacademy.org/computer-programming/day-and-night-animation-build-a-house/5706035909230592
+// Based on: 
 
 var a = 1; //cloud position
 var l = 1; //light change
@@ -235,8 +218,3 @@ draw = function() {
 
 //-----------------------------
 } // end of with env
-
-  
-</script>
-</body>
-</html>

@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf8">
-	<title>Get Web Image- Khan JavaScript</title>
-	<link rel="stylesheet" href="style.css"/>
-	<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script> -->
-	<script src="processing.min.js"></script>
-	<script src="khanProcessing.js"></script>
-</head>
-<body>
+var originalUrl = "https://www.khanacademy.org/computer-programming/spin-off-of-project-make-it-rain/5372088720424960";
 
-<p>
-</p>
-<br>
-<canvas id="canvas">
-</canvas>
-<script>
-var GW = 100;
-with( khanProcessing() )
+with( KP )
 {
 //-----------------------------
 
@@ -34,24 +17,13 @@ var randomDrop = function(){
 };
 
 // 6. Initialize the arrays using a for loop and random() function, at the beginning of the program. 
-for(var i = 0; i < 5; i++) { randomDrop(); } // The randomDrop function uses random().
+for(var i = 0; i < 25; i++) { randomDrop(); } // The randomDrop function uses random().
 
 var characterX = 0;
 var characterY = 0;
 
-var img1 = getWebImage("img/pardoart.net.jpg");
-var img2 = getWebImage("img/devastator_funk_by_pacman23.png");
-//println(img2.width);
-image( img2, 0,0, img2.width*0.3, img2.height*0.3);
-img2 = get(0,0,img2.width*0.3, img2.height*0.3);
-println(img2.width);
-
-
 draw = function() {
-	
-    image( img1,0,0, width, height);
-
-image(img2, 209, 0, GW, img2.height);
+    image(getImage("space/background"),0,0);
 
     // 5. Make it so that when the user clicks, a new drop is added to the array. 
     if(mouseIsPressed){ randomDrop(); }
@@ -63,18 +35,14 @@ image(img2, 209, 0, GW, img2.height);
     var y = Math.sin( characterY ) * 50 + 100;
     var y2 = Math.sin( characterY+0.5 ) * 40 + 100;
     
-    image(img2, characterX + (209*2), y);
-		image(img2, characterX + 209, y2);
-		image(img2, characterX, y);
-    image(img2, characterX - 209, y2);
-    image(img2, characterX - (209*2), y);
-    image(img2, characterX - (209*3), y2);
-		image(img2, characterX - (209*4), y);
-		image(img2, characterX - (209*5), y2);
+    image(getImage("space/beetleship"), characterX, y);
+    image(getImage("space/beetleship"), characterX - 400, y);
+    image(getImage("space/beetleship"), characterX - 200, y2);
+    image(getImage("space/beetleship"), characterX + 200, y2);
     
     characterX+=1.33;
     
-    if( characterX > 1045 ){ characterX = 0 - img2.width; println('!!'); }
+    if( characterX > 400 ){ characterX = 0; }
     //-----------------------------
     
     
@@ -82,7 +50,7 @@ image(img2, 209, 0, GW, img2.height);
     for (var i = 0; i < xPositions.length; i+=1) 
     {
         // 4. Make other things rain, like snowflakes (using more shape commands) or avatars (using the image commands). 
-        image(getWebImage("img/comment.png"), xPositions[i], -60 + yPositions[i], 20, 20);
+        image(getImage("space/star"), xPositions[i], -60 + yPositions[i], 20, 20);
         
         noStroke();
         fill(colors[i]);
@@ -98,7 +66,4 @@ image(img2, 209, 0, GW, img2.height);
 };
 
 //-----------------------------
-}  
-</script>
-</body>
-</html>
+}

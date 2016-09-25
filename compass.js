@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf8">
-	<title>Khan JavaScript</title>
-	<link rel="stylesheet" href="style.css"/>
-	<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script> -->
-	<script src="processing.min.js"></script>
-	<script src="khanProcessing.js"></script>
-</head>
-<body>
+var originalUrl = "https://www.khanacademy.org/computer-programming/compass/5061508998496256";
 
-<p>
-<a href="https://www.khanacademy.org/computer-programming/compass/5061508998496256">
-https://www.khanacademy.org/computer-programming/compass/5061508998496256</a>
-</p>
-<br>
-<canvas id="canvas">
-</canvas>
-<script>
-
-with( khanProcessing() )
+with( KP )
 {
 //-----------------------------
 
@@ -268,7 +249,4 @@ compass.draw();
 
 
 //-----------------------------
-}  
-</script>
-</body>
-</html>
+}
