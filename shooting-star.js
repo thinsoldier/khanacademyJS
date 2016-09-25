@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf8">
-	<title>Shooting Star - Khan JavaScript</title>
-	<link rel="stylesheet" href="style.css"/>
-	<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script> -->
-	<script src="processing.min.js"></script>
-	<script src="khanProcessing.js"></script>
-</head>
-<body>
+var originalUrl = null;
 
-<p>
-
-</p>
-<br>
-<canvas id="canvas">
-</canvas>
-<script>
-with( khanProcessing() )
+with( KP )
 {
 //-----------------------------
 
@@ -107,10 +90,3 @@ draw = function() {
 
 //-----------------------------
 }
-
-
-
-  
-</script>
-</body>
-</html>

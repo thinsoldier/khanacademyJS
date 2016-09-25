@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<title>Khan JavaScript</title>
+	<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<p>
+<a id="origLink" href="">foobar</a>
+</p>
+<br>
+
+<ul id="list">
+</ul>
+
+<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script> -->
+<script src="processing.min.js"></script>
+<script src="khanProcessing.js"></script>
+<script>
+var files = [
+	'animal-attack.js',
+	'shooting-star.js',
+	'bookshelf.html',
+	'compass.html',
+	'get-web-image.html',
+	'house-refactor.html',
+	'make-it-rain.html',
+	'radial-gradient.html',
+];
+var destroy = function(){
+	var canvas = document.getElementById('canvas');
+	if(canvas){canvas.parentElement.removeChild(canvas);}
+}
+var build = function( fileIndex ){
+	destroy();
+	var canvas = document.createElement('canvas');
+	canvas.id="canvas";
+	document.body.insertBefore( canvas, document.body.firstChild );
+	console.log(document);
+	KP = new khanProcessing();
+	
+	var script = document.createElement('script');
+	script.onload = function(){
+		var link = document.getElementById('origLink');
+		console.log('link');
+		link.innerHTML = originalUrl;
+		link.href = originalUrl;
+	}
+	script.src = files[ fileIndex ];
+	document.body.appendChild(script);
+}
+
+var urlInfo = window.location.href.split('?file=');
+if( urlInfo.length === 2)
+{ build( urlInfo[1] ); }
+else { build( 0 ); }
+</script>
+
+
+<script>
+var list = document.getElementById('list');
+for( x in files ){
+	var li = document.createElement('li');
+	var a = document.createElement('a');
+	a.href = 'index.html?file=' + x;
+	a.innerHTML = files[x];
+	li.appendChild( a );
+	list.appendChild( li );
+	console.log(a);
+}
+</script>
+
+</body>
+</html>

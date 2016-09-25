@@ -1,24 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf8">
-	<title>Animal attack" - Khan JavaScript</title>
-	<link rel="stylesheet" href="style.css"/>
-	<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script> -->
-	<script src="processing.min.js"></script>
-	<script src="khanProcessing.js"></script>
-</head>
-<body>
+var originalUrl = 'https://www.khanacademy.org/computer-programming/spin-off-of-project-animal-attack/5652289920565248';
 
-<p>
-<a href="https://www.khanacademy.org/computer-programming/spin-off-of-project-animal-attack/5652289920565248">https://www.khanacademy.org/computer-programming/spin-off-of-project-animal-attack/5652289920565248</a>
-</p>
-<br>
-<canvas id="canvas">
-</canvas>
-<script>
-
-with( khanProcessing() )
+with( KP )
 {
 //-----------------------------
 
@@ -89,7 +71,4 @@ var noseH = bodyH/2.65; // +40 relative to body height √
 
 
 //-----------------------------
-}  
-</script>
-</body>
-</html>
+}
