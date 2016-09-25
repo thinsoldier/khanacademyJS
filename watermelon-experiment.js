@@ -1,16 +1,23 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/using-get-v3/4853774314242048";
+var originalUrl = "https://www.khanacademy.org/computer-programming/using-get-v6-mask/4633084460400640";
 
 with( KP )
 {
 //-----------------------------
 
-var setupSlice = function() {
+// This technique struggles at higher framerates.
+frameRate(30);
+
+// http://processingjs.org/reference/PImage/
+// http://processingjs.org/reference/PImage_mask_/
+
+// Draws a watermelon slice. Returns a pimg.
+var getSliceColor = function() {
     noStroke();
     // give canvas completely transparent background
     background(0, 0, 0, 0);
     // draw slice on transparent background    
     //Shadow
-    fill(0, 0, 0, 50);
+    fill(222, 222, 222);
     arc(195, 166, 245, 245, 20, 200);
     
     //Dark green
@@ -42,72 +49,81 @@ var setupSlice = function() {
     ellipse(214, 227, 7, 10);
     ellipse(254, 238, 7, 10);
     // capture and return what was drawn as an independant image
-    return get(72,114,257,175);
+    var pimg = get(72,114,257,175);
+    // erase before returning
+    background(0, 0, 0, 0);
+    return pimg;
 };
 
-var setupPlate = function() {
-    fill(255);
-    stroke(210, 208, 237);
-    ellipse(200, 200, 350, 350); // plate
-    ellipse(200, 200, 300, 300);
-    return get(24, 24, 352, 352);
+/* 
+It would be much easier if there was a way to extract the alpha channel automatically created by getSliceColor. 
+And then adjust its brightness/darkness.
+*/
+
+// Draws a black and grey shape that exactly matches the watermelon slice. Returns a pimg.
+var getSliceMask = function( alpha ) {
+    if(alpha > 1 ){alpha = 1.00;}
+    if(alpha < 0 ){alpha = 0.00;}
+    if(alpha === undefined){ alpha = 0.5; }
+    
+    noStroke();
+    // give canvas completely transparent background
+    background(0, 0, 0, 0);
+    // draw slice on transparent background
+    
+    // solid bg for debugging
+    //background(0, 179, 255);
+    
+    //Shadow
+    fill(100 * alpha);
+    arc(195, 166, 245, 245, 20, 200);
+    
+    // Main slice body
+    fill(255 * alpha);
+    arc(210, 157, 250, 250, 20, 200);
+    arc(220, 160, 230, 230, 20, 200);
+    arc(225, 161, 200, 200, 20, 200);
+    
+    fill(33, 0, 0);
+    strokeWeight(2);
+    stroke(0, 0, 0, 40);
+    // capture and return what was drawn as an independant image
+    // MASK MUST BE EXACTLY THE SAME SIZE AS THE IMAGE IT WILL BE USED TO MASK.
+    var pimg = get(72,114,257,175);
+    // erase before returning
+    background(0, 0, 0, 0);
+    return pimg;
 };
 
-var layers = {slice:setupSlice(), plate:setupPlate()};
 
-var slice = function( x, y ){
-    imageMode(CORNER);
-    image( layers.slice, x, y );
-};
-var plate = function( x, y ){
-    imageMode(CENTER);
-    image( layers.plate, x, y );
-};
-//-----------------------------
 
-var transparently = function( imgdata, x, y, opacity ){
-   var i = imgdata,
-    w=i.width,h=i.height,x,y,f,
-    g=createGraphics(w,h,'P2D'); //make another drawing board
-g.beginDraw();
-g.background(255, 255, 255, 0); //fill it with a transparent color
-g.image(i); //draw the image on it
-g.loadPixels();
-var p=g.imageData.data; //p[] now contains the pixel data of g, in RGBARGBA... format
-for(var j=p.length-1;j>0;j-=4){ //loop backwards through the pixel data by fours
-    p[j]*=opacity; //multiply opacity byte
-}
-g.updatePixels(); //put pixel data back into g
-g.endDraw();
-image(g,x,y);
+var drawBackground = function(){
+ noFill();
+stroke(77, 77, 77);
+strokeWeight(10);
+rect(72,114,257,175);   
 };
 
-
-
-var render = function(){
-
-fill(255);
-background(186, 145, 20); // wooden table
-plate(200,200);
-
-
-//Bottom slice
-rotate(5);
-slice( 82, 145 );
-//Top slice
-rotate(-30);
-translate(-63, 37);
-slice( 72, 114 );
-resetMatrix();
-};
-
+var slice = getSliceColor();
 var opacity = 0;
-var opacityDirection = 0.01;
-draw= function() {
-    render();
-    transparently(layers.slice, 213, 200, opacity);
+var opacityDirection = 0.01; // also rate of change
+
+draw = function() {
+    // MASK MUST BE EXACTLY THE SAME SIZE AS THE IMAGE IT WILL BE USED TO MASK.
+    // Update slice image's mask with varying opacity.
+    slice.mask(getSliceMask(opacity));
+    
+    // Update opacity value.
     opacity += opacityDirection;
+    // Reverse opacity direction when we hit the minimum or maximum.
     if( opacity > 1 || opacity < 0 ){ opacityDirection *= -1; }
+    
+    drawBackground();
+    
+    imageMode(CENTER);
+    image(slice, 200+sin(frameCount)*100, 200+cos(frameCount)*100);
+    
+    point(200,200);
 };
 
 //-----------------------------
