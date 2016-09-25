@@ -1,23 +1,27 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/using-get-v6-mask/4633084460400640";
+var originalUrl = "https://www.khanacademy.org/computer-programming/animated-transparency-using-get-and-tint-finally/5862903248453632";
 
 with( KP )
 {
 //-----------------------------
 
-// This technique struggles at higher framerates.
+// This technique struggles at higher framerates, but not as bad as earlier attempts.
 frameRate(30);
 
-// http://processingjs.org/reference/PImage/
-// http://processingjs.org/reference/PImage_mask_/
+// IF YOU DON'T SEE THE TRANSPARENCY ANIMATION, OR IF IT NEVER GETS TO 100% OPACITY,
+// KICKSTART IT ON LINE 81 !!!
+// THE TINT FUNCTION IS BUGGY.
 
-// Draws a watermelon slice. Returns a pimg.
-var getSliceColor = function() {
+// http://processingjs.org/reference/PImage/
+// http://processingjs.org/reference/tint_/
+
+// Draws a watermelon slice.
+var getSlice = function() {
     noStroke();
     // give canvas completely transparent background
     background(0, 0, 0, 0);
     // draw slice on transparent background    
     //Shadow
-    fill(222, 222, 222);
+    fill(0, 0, 0, 50);
     arc(195, 166, 245, 245, 20, 200);
     
     //Dark green
@@ -55,48 +59,6 @@ var getSliceColor = function() {
     return pimg;
 };
 
-/* 
-It would be much easier if there was a way to extract the alpha channel automatically created by getSliceColor. 
-And then adjust its brightness/darkness.
-*/
-
-// Draws a black and grey shape that exactly matches the watermelon slice. Returns a pimg.
-var getSliceMask = function( alpha ) {
-    if(alpha > 1 ){alpha = 1.00;}
-    if(alpha < 0 ){alpha = 0.00;}
-    if(alpha === undefined){ alpha = 0.5; }
-    
-    noStroke();
-    // give canvas completely transparent background
-    background(0, 0, 0, 0);
-    // draw slice on transparent background
-    
-    // solid bg for debugging
-    //background(0, 179, 255);
-    
-    //Shadow
-    fill(100 * alpha);
-    arc(195, 166, 245, 245, 20, 200);
-    
-    // Main slice body
-    fill(255 * alpha);
-    arc(210, 157, 250, 250, 20, 200);
-    arc(220, 160, 230, 230, 20, 200);
-    arc(225, 161, 200, 200, 20, 200);
-    
-    fill(33, 0, 0);
-    strokeWeight(2);
-    stroke(0, 0, 0, 40);
-    // capture and return what was drawn as an independant image
-    // MASK MUST BE EXACTLY THE SAME SIZE AS THE IMAGE IT WILL BE USED TO MASK.
-    var pimg = get(72,114,257,175);
-    // erase before returning
-    background(0, 0, 0, 0);
-    return pimg;
-};
-
-
-
 var drawBackground = function(){
  noFill();
 stroke(77, 77, 77);
@@ -104,23 +66,32 @@ strokeWeight(10);
 rect(72,114,257,175);   
 };
 
-var slice = getSliceColor();
+var slice = getSlice();
 var opacity = 0;
 var opacityDirection = 0.01; // also rate of change
 
+imageMode(CENTER);
+
 draw = function() {
-    // MASK MUST BE EXACTLY THE SAME SIZE AS THE IMAGE IT WILL BE USED TO MASK.
-    // Update slice image's mask with varying opacity.
-    slice.mask(getSliceMask(opacity));
+    background(255, 255, 255);
+    
+    drawBackground();
     
     // Update opacity value.
     opacity += opacityDirection;
     // Reverse opacity direction when we hit the minimum or maximum.
     if( opacity > 1 || opacity < 0 ){ opacityDirection *= -1; }
     
-    drawBackground();
+    var tintalpha = 255*opacity;
     
-    imageMode(CENTER);
+    // tint() is buggy.
+    // start without tint alpha, wait a while, then enable tint alpha usage and it should work.
+    if( frameCount > 60 )
+    { tint(255,255,255, tintalpha); }
+    else {
+        tint(255,255,255, 255); // enable then disable to kickstart animation
+    }
+    
     image(slice, 200+sin(frameCount)*100, 200+cos(frameCount)*100);
     
     point(200,200);
