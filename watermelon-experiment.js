@@ -1,12 +1,14 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/using-get-v2/4829979121680384";
+var originalUrl = "https://www.khanacademy.org/computer-programming/using-get-v3/4853774314242048";
 
 with( KP )
 {
 //-----------------------------
 
-
 var setupSlice = function() {
     noStroke();
+    // give canvas completely transparent background
+    background(0, 0, 0, 0);
+    // draw slice on transparent background    
     //Shadow
     fill(0, 0, 0, 50);
     arc(195, 166, 245, 245, 20, 200);
@@ -39,42 +41,39 @@ var setupSlice = function() {
     ellipse(174, 215, 7, 10);
     ellipse(214, 227, 7, 10);
     ellipse(254, 238, 7, 10);
+    // capture and return what was drawn as an independant image
+    return get(72,114,257,175);
 };
 
-var setup = function(){
-    // give canvas completely transparent background
-    background(250, 155, 250,0);
-    // draw slice on transparent background
-    setupSlice();
-    // capture what was drawn as an independant image
-    var sliceLayer = get(72,114,257,175);
-    
-    var output = {slice:sliceLayer};
-    return output;
+var setupPlate = function() {
+    fill(255);
+    stroke(210, 208, 237);
+    ellipse(200, 200, 350, 350); // plate
+    ellipse(200, 200, 300, 300);
+    return get(24, 24, 352, 352);
 };
 
-var layers = setup();
+var layers = {slice:setupSlice(), plate:setupPlate()};
 
 var slice = function( x, y ){
+    imageMode(CORNER);
     image( layers.slice, x, y );
+};
+var plate = function( x, y ){
+    imageMode(CENTER);
+    image( layers.plate, x, y );
 };
 //-----------------------------
 
 
 
-/*
-I guess it's too light of a meal to be dinner, but I'm craving
-watemelon and thought the color scheme would look pretty!
-*/
+var render = function(){
 
 fill(255);
 background(186, 145, 20); // wooden table
-ellipse(200, 200, 350, 350); // plate
-ellipse(200, 200, 300, 300); 
+plate(200,200);
 
-//This is the code for the watermelon
 
-//I want two slices, so I draw it twice and rotate/translate it
 //Bottom slice
 rotate(5);
 slice( 82, 145 );
@@ -82,8 +81,9 @@ slice( 82, 145 );
 rotate(-30);
 translate(-63, 37);
 slice( 72, 114 );
+};
 
-
+render();
 
 //-----------------------------
 }
