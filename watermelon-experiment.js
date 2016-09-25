@@ -1,11 +1,11 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/using-get/6737139485245440";
+var originalUrl = "https://www.khanacademy.org/computer-programming/using-get-v2/4829979121680384";
 
 with( KP )
 {
 //-----------------------------
 
 
-var slice = function() {
+var setupSlice = function() {
     noStroke();
     //Shadow
     fill(0, 0, 0, 50);
@@ -42,18 +42,22 @@ var slice = function() {
 };
 
 var setup = function(){
-// give canvas completely transparent background
-background(250, 155, 250,0);
-// draw slice on transparent background
-slice();
-// capture what was drawn as an independant image
-var sliceLayer = get(72,114,257,175);
-
-var output = {slice:sliceLayer};
-return output;
+    // give canvas completely transparent background
+    background(250, 155, 250,0);
+    // draw slice on transparent background
+    setupSlice();
+    // capture what was drawn as an independant image
+    var sliceLayer = get(72,114,257,175);
+    
+    var output = {slice:sliceLayer};
+    return output;
 };
 
 var layers = setup();
+
+var slice = function( x, y ){
+    image( layers.slice, x, y );
+};
 //-----------------------------
 
 
@@ -73,11 +77,13 @@ ellipse(200, 200, 300, 300);
 //I want two slices, so I draw it twice and rotate/translate it
 //Bottom slice
 rotate(5);
-image( layers.slice, 82, 145 );
+slice( 82, 145 );
 //Top slice
 rotate(-30);
 translate(-63, 37);
-image( layers.slice, 72, 114 );
+slice( 72, 114 );
+
+
 
 //-----------------------------
 }
