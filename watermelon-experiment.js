@@ -65,6 +65,24 @@ var plate = function( x, y ){
 };
 //-----------------------------
 
+var transparently = function( imgdata, x, y, opacity ){
+   var i = imgdata,
+    w=i.width,h=i.height,x,y,f,
+    g=createGraphics(w,h,'P2D'); //make another drawing board
+g.beginDraw();
+g.background(255, 255, 255, 0); //fill it with a transparent color
+g.image(i); //draw the image on it
+g.loadPixels();
+var p=g.imageData;
+p=p.data; //p[] now contains the pixel data of g, in RGBARGBA... format
+for(var j=p.length-1;j>0;j-=4){ //loop backwards through the pixel data by fours
+    p[j]*=opacity; //multiply opacity byte
+}
+g.updatePixels(); //put pixel data back into g
+g.endDraw();
+image(g,x,y);
+};
+
 
 
 var render = function(){
@@ -81,9 +99,13 @@ slice( 82, 145 );
 rotate(-30);
 translate(-63, 37);
 slice( 72, 114 );
+resetMatrix();
 };
 
+
+
 render();
+transparently(layers.slice, 213, 200, 0.5);
 
 //-----------------------------
 }
