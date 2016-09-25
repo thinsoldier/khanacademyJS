@@ -24,3 +24,27 @@ padding: 20px;
 margin: auto;
 display: block;
 }
+
+#list {
+  list-style-type: none;
+  margin:0;
+  padding:0;
+  -moz-column-count: 2;
+  column-count: 2;
+}
+
+#list li {
+  list-style-type: none;
+  padding: 0.25em;
+  margin-bottom: 0.5em;
+  background: #eee;
+}
+
+#list li:hover {
+  background: #fff;
+}
+
+#list a {
+  text-decoration: none;
+  display: block;
+}
