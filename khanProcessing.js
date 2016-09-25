@@ -44,6 +44,11 @@ function khanProcessing( )
         return sinFn(processing.radians(angle));
     }
 		
+		var arcFn = processing.arc;
+		processing.arc = function(x, y, w, h, startAng, stopAng) {
+				return arcFn(x, y, w, h, processing.radians(startAng), processing.radians(stopAng) );
+		}
+		
 		processing.draw = function(){ 'override "draw" in your own code' };
 		
 	});
