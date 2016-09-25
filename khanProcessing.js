@@ -29,6 +29,21 @@ function khanProcessing( )
 			return processing.loadImage(url);
 		}
 		
+		var rotateFn = processing.rotate; // backup original
+    processing.rotate = function(angle) {
+        rotateFn(processing.radians(angle));
+    }
+		
+		var cosFn = processing.cos; // backup original
+    processing.cos = function(angle) {
+        return cosFn(processing.radians(angle));
+    }
+		
+    var sinFn = processing.sin; // backup original
+    processing.sin = function(angle) {
+        return sinFn(processing.radians(angle));
+    }
+		
 		processing.draw = function(){ 'override "draw" in your own code' };
 		
 	});
