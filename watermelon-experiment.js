@@ -73,8 +73,7 @@ g.beginDraw();
 g.background(255, 255, 255, 0); //fill it with a transparent color
 g.image(i); //draw the image on it
 g.loadPixels();
-var p=g.imageData;
-p=p.data; //p[] now contains the pixel data of g, in RGBARGBA... format
+var p=g.imageData.data; //p[] now contains the pixel data of g, in RGBARGBA... format
 for(var j=p.length-1;j>0;j-=4){ //loop backwards through the pixel data by fours
     p[j]*=opacity; //multiply opacity byte
 }
@@ -102,10 +101,14 @@ slice( 72, 114 );
 resetMatrix();
 };
 
-
-
-render();
-transparently(layers.slice, 213, 200, 0.5);
+var opacity = 0;
+var opacityDirection = 0.01;
+draw= function() {
+    render();
+    transparently(layers.slice, 213, 200, opacity);
+    opacity += opacityDirection;
+    if( opacity > 1 || opacity < 0 ){ opacityDirection *= -1; }
+};
 
 //-----------------------------
 }
