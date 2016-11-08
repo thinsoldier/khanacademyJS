@@ -1,4 +1,11 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/reusable-donut-via-creategraphics/5350912500563968";
+var sketchMeta = {
+	name:"reusable-donut-via-creategraphics",
+	originalUrl:"https://www.khanacademy.org/computer-programming/reusable-donut-via-creategraphics/5350912500563968",
+	author:"thinsoldier",
+	authorUrl:"https://www.khanacademy.org/profile/thinsoldier/projects",
+};
+
+
 
 with( KP )
 {

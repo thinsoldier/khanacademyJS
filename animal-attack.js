@@ -1,4 +1,10 @@
-var originalUrl = 'https://www.khanacademy.org/computer-programming/spin-off-of-project-animal-attack/5652289920565248';
+var sketchMeta = {
+	name:"animal attack",
+	originalUrl:"https://www.khanacademy.org/computer-programming/spin-off-of-project-animal-attack/5652289920565248",
+	author:"thinsoldier",
+	authorUrl:"https://www.khanacademy.org/profile/thinsoldier/projects",
+};
+
 
 with( KP )
 {

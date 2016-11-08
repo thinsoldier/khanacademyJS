@@ -1,4 +1,12 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/dinner-time/5006482035441664";
+var sketchMeta = {
+	name:"pizza",
+	originalUrl:"https://www.khanacademy.org/computer-programming/dinner-time/5006482035441664",
+	author:"Piyush",
+	authorUrl:"https://www.khanacademy.org/profile/psp09ful/projects",
+};
+
+
+
 
 with( KP )
 {

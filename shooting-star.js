@@ -1,4 +1,10 @@
-var originalUrl = null;
+var sketchMeta = {
+	name:"shooting-star.js",
+	originalUrl:"",
+	author:"thinsoldier",
+	authorUrl:"https://www.khanacademy.org/profile/thinsoldier/projects",
+};
+
 
 with( KP )
 {

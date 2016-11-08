@@ -1,4 +1,12 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/pikachu-ssb4-rendition/6314067105021952";
+var sketchMeta = {
+	name:"Pikachu (SSB4 Rendition)",
+	originalUrl:"https://www.khanacademy.org/computer-programming/pikachu-ssb4-rendition/6314067105021952",
+	author:"DY (darryl-yeo.com)",
+	authorUrl:"https://www.khanacademy.org/profile/darrylyeo/projects",
+};
+
+
+
 
 with( KP )
 {

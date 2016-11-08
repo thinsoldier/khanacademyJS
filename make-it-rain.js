@@ -1,4 +1,12 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/spin-off-of-project-make-it-rain/5372088720424960";
+var sketchMeta = {
+	name:"make it rain",
+	originalUrl:"https://www.khanacademy.org/computer-programming/spin-off-of-project-make-it-rain/5372088720424960",
+	author:"thinsoldier",
+	authorUrl:"https://www.khanacademy.org/profile/thinsoldier/projects",
+};
+
+
+var originalUrl = "";
 
 with( KP )
 {

@@ -1,4 +1,11 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/spin-off-of-project-bookshelf/5691752398848000";
+var sketchMeta = {
+	name:"bookshelf",
+	originalUrl:"https://www.khanacademy.org/computer-programming/spin-off-of-project-bookshelf/5691752398848000",
+	author:"thinsoldier",
+	authorUrl:"https://www.khanacademy.org/profile/thinsoldier/projects",
+};
+
+
 
 with( khanProcessing() )
 {

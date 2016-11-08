@@ -13,6 +13,7 @@ background: #666;
 }
 
 body {
+font-family: Trebuchet MS;
 width: 640px;
 margin: 0 auto 100px auto;
 background: #ddd;
@@ -20,8 +21,12 @@ min-height: 100%;
 padding: 20px;
 }
 
+a {
+  text-decoration: none;
+}
+
 #canvas {
-margin: auto;
+margin: 0 auto 2em auto;
 display: block;
 }
 
@@ -45,6 +50,5 @@ display: block;
 }
 
 #list a {
-  text-decoration: none;
   display: block;
 }

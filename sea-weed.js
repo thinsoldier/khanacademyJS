@@ -1,4 +1,12 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/sea-weed-v3/5192150699606016";
+var sketchMeta = {
+	name:"sea-weed",
+	originalUrl:"https://www.khanacademy.org/computer-programming/sea-weed-v3/5192150699606016",
+	author:"thinsoldier",
+	authorUrl:"https://www.khanacademy.org/profile/thinsoldier/projects",
+};
+
+
+
 
 with( KP )
 {

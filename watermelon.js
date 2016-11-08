@@ -1,4 +1,11 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/spin-off-of-project-whats-for-dinner/5377013071347712";
+var sketchMeta = {
+	name:"watermelon",
+	originalUrl:"https://www.khanacademy.org/computer-programming/spin-off-of-project-whats-for-dinner/5377013071347712",
+	author:"Holaya",
+	authorUrl:"https://www.khanacademy.org/profile/srkhllbl/projects",
+};
+
+var originalUrl = "";
 
 with( KP )
 {

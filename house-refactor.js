@@ -1,4 +1,12 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/day-and-night-animation-build-a-house/5706035909230592";
+var originalUrl = "";
+
+var sketchMeta = {
+	name:"Day and Night Animation - Build-a-House",
+	originalUrl:"https://www.khanacademy.org/computer-programming/day-and-night-animation-build-a-house/5706035909230592",
+	author:"KiddOhNo",
+	authorUrl:"https://www.khanacademy.org/profile/KiddOhNo/projects",
+};
+
 
 with( KP )
 {

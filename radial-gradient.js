@@ -1,3 +1,10 @@
+var sketchMeta = {
+	name:"radial-gradient",
+	originalUrl:"",
+	author:"thinsoldier",
+	authorUrl:"https://www.khanacademy.org/profile/thinsoldier/projects",
+};
+
 var originalUrl = null;
 
 with( KP )

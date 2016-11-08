@@ -1,4 +1,12 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/3d-wave-using-p3d/6064202091593728";
+var sketchMeta = {
+	name:"p3d wave",
+	originalUrl:"https://www.khanacademy.org/computer-programming/3d-wave-using-p3d/6064202091593728",
+	author:"jocopa3",
+	authorUrl:"https://www.khanacademy.org/profile/Jocopa3/projects",
+};
+
+
+
 
 with( KP )
 {

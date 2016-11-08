@@ -1,5 +1,13 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/my-khantober-2016-programs/6123948871843840";
-var canvasSize = 600;
+var sketchMeta = {
+	name:"My Khantober 2016 Programs",
+	originalUrl:"https://www.khanacademy.org/computer-programming/my-khantober-2016-programs/6123948871843840",
+	author:"Chester Banks",
+	authorUrl:"https://www.khanacademy.org/profile/chesterbanks/projects",
+	canvas:{size:600}
+};
+
+
+
 with( KP )
 {
 //-----------------------------

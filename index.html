@@ -8,7 +8,8 @@
 <body>
 
 <p>
-<a id="origLink" target="_blank" href="">foobar</a>
+Original: <a id="origLink" target="_blank" href="">----</a><br>
+Author: <a id="authLink" target="_blank" href="#kaprofile">----</a><br>
 </p>
 <br>
 
@@ -46,22 +47,29 @@ var build = function( fileIndex )
 	var canvas = document.createElement('canvas');
 	canvas.id="canvas";
 	document.body.insertBefore( canvas, document.body.firstChild );
-	console.log(document);
 	KP = new khanProcessing();
 	
 	var script = document.createElement('script');
 	script.onload = function(){
-		var link = document.getElementById('origLink');
-		console.log('link');
-		link.innerHTML = originalUrl;
-		link.href = originalUrl;
+		displayMeta(sketchMeta);
 
-		// Resize canvas if imported script defines a size.
-		if( canvasSize ){	KP.size(canvasSize,canvasSize); }
+		// Resize canvas if imported sketch defines a size other than the default of 400.
+		if( sketchMeta.canvas ){	KP.size(sketchMeta.canvas.size, sketchMeta.canvas.size); }
+		// If the sketch defines 400 again, there will be buggy behaviour.
 	}
 	script.src = files[ fileIndex ];
 	document.body.appendChild(script);
+}
+
+var displayMeta = function( data )
+{
+	var sketchlink = document.getElementById('origLink');
+	sketchlink.innerHTML = data.name;
+	sketchlink.href = data.originalUrl;
 	
+	var authLink = document.getElementById('authLink');
+	authLink.innerHTML = data.author;
+	authLink.href = data.authorUrl;
 }
 
 var urlInfo = window.location.href.split('?file=');
@@ -80,7 +88,6 @@ for( x in files ){
 	a.innerHTML = files[x];
 	li.appendChild( a );
 	list.appendChild( li );
-	console.log(a);
 }
 </script>
 

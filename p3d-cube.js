@@ -1,4 +1,12 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/p3d/2452976244";
+var sketchMeta = {
+	name:"p3d cube",
+	originalUrl:"https://www.khanacademy.org/computer-programming/p3d/2452976244",
+	author:"DillingerLee",
+	authorUrl:"https://www.khanacademy.org/profile/musicalglass/projects",
+};
+
+
+
 
 with( KP )
 {

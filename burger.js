@@ -1,4 +1,11 @@
-var originalUrl = "https://www.khanacademy.org/computer-programming/viralburger/6501465134465024";
+var sketchMeta = {
+	name:"#Viralburger",
+	originalUrl:"https://www.khanacademy.org/computer-programming/viralburger/6501465134465024",
+	author:"JoeTran",
+	authorUrl:"https://www.khanacademy.org/profile/jtran88/projects",
+};
+
+
 
 with( KP )
 {

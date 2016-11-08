@@ -1,4 +1,13 @@
-var originalUrl = 'https://www.khanacademy.org/computer-programming/cartesian-coordinates/1164729546';
+var sketchMeta = {
+	name:"cartesian-coordinates",
+	originalUrl:"https://www.khanacademy.org/computer-programming/cartesian-coordinates/1164729546",
+	author:"DillingerLee",
+	authorUrl:"https://www.khanacademy.org/profile/musicalglass/projects",
+	//canvas:{size:400}
+};
+
+
+
 
 with( KP )
 {
