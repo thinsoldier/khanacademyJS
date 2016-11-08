@@ -28,6 +28,7 @@ var files = [
 	'donuts-create-graphics.js',
 	'get-web-image.js',
 	'house-refactor.js',
+	'khantober2016.js',
 	'make-it-rain.js',
 	'p3d-cube.js',
 	'p3d-wave.js',
@@ -54,9 +55,13 @@ var build = function( fileIndex )
 		console.log('link');
 		link.innerHTML = originalUrl;
 		link.href = originalUrl;
+
+		// Resize canvas if imported script defines a size.
+		if( canvasSize ){	KP.size(canvasSize,canvasSize); }
 	}
 	script.src = files[ fileIndex ];
 	document.body.appendChild(script);
+	
 }
 
 var urlInfo = window.location.href.split('?file=');

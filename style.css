@@ -13,8 +13,8 @@ background: #666;
 }
 
 body {
-width: 500px;
-margin: auto;
+width: 640px;
+margin: 0 auto 100px auto;
 background: #ddd;
 min-height: 100%;
 padding: 20px;
