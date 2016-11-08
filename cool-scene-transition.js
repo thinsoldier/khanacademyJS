@@ -2,7 +2,7 @@ var sketchMeta = {
 	name:"Cool Scene Transition",
 	originalUrl:"https://www.khanacademy.org/computer-programming/cool-scene-transition/4781484512",
 	author:"Chester Banks",
-	authorUrl:"",
+	authorUrl:"https://www.khanacademy.org/profile/chesterbanks/projects",
 };
 
 
@@ -15,7 +15,7 @@ textAlign(CENTER, CENTER);
 rectMode(CENTER);
 imageMode(CENTER);
 
-image(getImage("space/background"), 200, 200, width, height);
+image(getWebImage("img/space/background.png"), 200, 200, width, height);
 var pics = [];
 for(var i = 0; i < 425; i += 50){
     for(var j = 0; j < 425; j += 50){
