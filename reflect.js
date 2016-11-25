@@ -10,6 +10,8 @@ with( KP )
 {
 //-----------------------------
 
+var picture = getWebImage("img/devastator_funk_by_pacman23.png");//getImage("avatars/leafers-tree");
+
 imageMode(CENTER);
 rectMode(CENTER);
 
@@ -17,7 +19,7 @@ background(0, 0, 0, 0);
 pushMatrix();
 translate(200, 300);
 scale(1, -1);
-image(getImage("avatars/leafers-tree"), 0, 15, 200, 200);
+image( picture, 0, 15, 200, 200);
 popMatrix();
 
 var pics = [];
@@ -29,7 +31,7 @@ var num;
 noStroke();
 draw = function() {
     background(30, 62, 87);
-    image(getImage("avatars/leafers-tree"), 200, 116, 200, 200);
+    image( picture, 200, 116, 200, 200);
     fill(140, 205, 255);
     rect(200, 300, 400, 200);
     num = 0;
